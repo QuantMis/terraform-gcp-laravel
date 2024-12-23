@@ -1,0 +1,14 @@
+ultimate goals:
+- full automation of gcp resources provision along with laravel app deployment 
+
+steps 1/:
+1) automate creation of compute engine (DONE)
+2) automate creation of sql cloud database 
+3) automate creation of storage bucket 
+4) make sure each of these services can communicate with each other 
+via subnetworks 
+5) automate git clone project repository into compute engine
+6) automate deployment of the project
+
+
+
