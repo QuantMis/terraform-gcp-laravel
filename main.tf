@@ -17,7 +17,7 @@ provider "google" {
 resource "google_compute_instance" "laravel_vm" {
   name         = "laravel-vm-instance"
   machine_type = "e2-micro"
-  zone         = "asia-southeast1-a"
+  zone         = var.zone
 
   boot_disk {
     initialize_params {
@@ -30,6 +30,28 @@ resource "google_compute_instance" "laravel_vm" {
 
     access_config {}
   }
+}
+
+resource "google_sql_database_instance" "mysql_instance" {
+    name = "laravel-mysql"
+    region = var.region
+    database_version = "MYSQL_8_0"
+    settings {
+        tier = "db-n1-standard-2"
+    }
+    deletion_protection = false
+}
+
+resource "google_sql_database" "laravel_database" {
+  name     = "laravel-db"
+  instance = google_sql_database_instance.mysql_instance.name
+}
+
+resource "google_sql_user" "my_user" {
+  name     = "user"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = "password"
+  host = "%"
 }
 
 

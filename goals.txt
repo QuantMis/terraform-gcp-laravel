@@ -3,13 +3,10 @@ ultimate goals:
 
 steps 1/6:
 1) automate creation of compute engine (DONE)
-2) automate creation of sql cloud database 
-3) automate creation of storage bucket 
+2) automate creation of sql cloud database (DONE)
+3) automate creation of storage bucket () 
 4) make sure each of these services can communicate with each other 
 via subnetworks 
+5) modularize script
 5) automate git clone project repository into compute engine
 6) automate deployment of the project
-
-
-
-
