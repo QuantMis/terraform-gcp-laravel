@@ -30,6 +30,12 @@ resource "google_compute_instance" "laravel_vm" {
 
     access_config {}
   }
+
+  metadata_startup_script = <<EOT
+    touch test.py
+    ssh-keyscan 20.205.243.166 >> ~/.ssh/known_hosts
+    git clone https://github.com/QuantMis/laravel-sso-server.git
+  EOT
 }
 resource "google_storage_bucket" "mybucket-3884196215" {
   name = "laravel-mybucket-3884196215"
