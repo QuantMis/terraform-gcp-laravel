@@ -31,6 +31,12 @@ resource "google_compute_instance" "laravel_vm" {
     access_config {}
   }
 }
+resource "google_storage_bucket" "mybucket-3884196215" {
+  name = "laravel-mybucket-3884196215"
+  location = var.region
+  storage_class = "standard"
+  public_access_prevention = "enforced"
+}
 
 resource "google_sql_database_instance" "mysql_instance" {
     name = "laravel-mysql"
